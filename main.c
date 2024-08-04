@@ -7,9 +7,16 @@
 
 int main()
 {
+  Vector myVector;
+  Matrix myMatrix;
 
-  Matrix* testMatrix = createMatrix(2, 1);
+  initVector(3, &myVector);
+  initMatrix(2, 2, &myMatrix);
 
-  printf("Matriisin ensimmäinen arvo: %d", testMatrix->data[0][0]);
+  myVector.data[1] = 2;
+
+  printf("Size of vector: %d\n", myVector.size);
+  printf("Size of matrix: %dx%d", myMatrix.size[0], myMatrix.size[1]);
+
   return 0;
 }

@@ -1,14 +1,36 @@
 #include <stdlib.h>
 
-typedef struct int** Matrix;
+typedef struct {
+  int size[2];
+  int** data;
+} Matrix;
 
+void initMatrix(int rows, int columns, Matrix* m) {
+  m->data = (int**)malloc(sizeof(int) * rows);
+  for (int i=0; i < rows; i++) {
+    m->data[i] = (int*)malloc(sizeof(int) * columns);
+  }
 
-Matrix* createMatrix(int columns, int rows) {
-  Matrix* _matrix = (Matrix*) malloc(sizeof(Matrix));
-  for (int i=0; i=rows; i++) {
-    for (int j=0; j=columns; j++) {
-      _matrix->data[i][j] = 0;
+  for (int i=0; i < rows; i++) {
+    for (int j=0; j < columns; j++) {
+      m->data[i][j] = 0;
     }
   }
-  return _matrix;
+
+  m->size[0] = columns;
+  m->size[1] = rows;
+
+}
+
+typedef struct {
+  int size;
+  int* data;
+} Vector;
+
+void initVector(int size, Vector* v) {
+  v->size = size;
+  v->data = (int*) malloc(sizeof(int) * size);
+  for (int i=0; i < size; i++) {
+    v->data[i] = 0;
+  }
 }
